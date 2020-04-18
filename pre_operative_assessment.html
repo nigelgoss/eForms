@@ -11,8 +11,10 @@
 		
 		<style>
 		
-			body > div { border:1px solid lightgrey; padding:10px; }
-			body > div + div { margin-top:10px; }
+			body > div { border:1px solid lightgrey; }
+			div { padding:10px; }
+			div + div { margin-top:10px; }
+			label + label { margin-left:25px; }
 			
 		</style>
 		
@@ -70,9 +72,10 @@
 	<body>
 
 		<div>
-			<div>Q1</div>
+			<div>Has the proposed operation been explained to you?</div>
 			<div>
-				<input type="text" name="Q1" />
+				<label><input type="radio" name="OperationExplained" value="Yes" />Yes</label>
+				<label><input type="radio" name="OperationExplained" value="No" />No</label>
 			</div>
 		</div>
 
