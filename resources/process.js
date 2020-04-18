@@ -10,7 +10,7 @@
 		disabled = true;
 
 		var $d = {};
-		document.querySelectorAll("*[name]").forEach(function ($v) {
+		document.querySelectorAll("body *[name]").forEach(function ($v) {
 			if ($d[$v.name] === undefined) $d[$v.name] = ($v.type === "checkbox") ? [] : null;
 			if ($v.checked === false) return;
 			if ($v.checked === true) {
