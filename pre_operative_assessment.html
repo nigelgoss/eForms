@@ -48,7 +48,7 @@
 					xhr.open("GET", ".", true);
 					xhr.send();
 
-					console.log(JSON.stringify($d));
+					console.log(JSON.stringify([location.hash.split("#")[1], $d]));
 					
 				};
 				
