@@ -20,7 +20,7 @@
 				
 				var $d = {};
 				document.querySelectorAll("*[name]").forEach(function ($v) {
-					$d[$v.name] = ($v.value === "") null : $v.value;
+					$d[$v.name] = ($v.value === "") ? null : $v.value;
 				});
 				
 				var $e = [];
