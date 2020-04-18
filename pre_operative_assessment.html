@@ -29,9 +29,8 @@
 				
 				var $e = [];
 				
-				if ($d["Q1"] === null) {
-					$e.push("Question 1");
-				};
+				if ($d["OperationExplained"] === null) { $e.push("Question 1"); };
+				if ($d["OperationWilling"] === null) { $e.push("Question 2"); };
 
 				return $e;
 				
@@ -75,7 +74,7 @@
 		<div>
 			<div>3) Please use this space for any other comments you have</div>
 			<div>
-				<textarea name="OperationWilling"></textarea>
+				<textarea name="Comments"></textarea>
 			</div>
 		</div>
 
