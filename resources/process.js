@@ -23,7 +23,7 @@
 		var $e = validate($d);
 		if ($e.length > 0) {
 
-			alert("Errors:\n- " + $e.join("\n- "));
+			alert("Please review:\n- " + $e.join("\n- "));
 			disabled = false;
 
 		} else {
