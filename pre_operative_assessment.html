@@ -20,7 +20,7 @@
 				
 				var $d = {};
 				document.querySelectorAll("*[name]").forEach(function ($v) {
-					$d[$v.name] = $v.value;
+					$d[$v.name] = ($v.value === "") null : $v.value;
 				});
 				
 				var $e = [];
@@ -42,7 +42,7 @@
 						if (xhr.status !== 200) {
 							alert("There has been an error with the submission. Please retry.");
 						} else {
-							location.href = "complete.html";
+							location.href = ".";
 						};
 					};
 					xhr.open("GET", ".", true);
