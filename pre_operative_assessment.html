@@ -9,8 +9,31 @@
 		
 		<script>
 			
-			function validate () {
-				return true;
+			var disabled = false;
+			
+			function process () {
+				
+				if (disabled === true) return;
+				disabled = true;
+				
+				var $d = {};
+				document.querySelector("*[name]").forEach(function ($v) { $d[$v.name] = $v.value; });
+
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState !== 4) return;
+					disabled = false;
+					if (xhr.status !== 200) {
+						alert("There has been an error with the submission. Please retry.");
+					} else {
+						location.href = "complete.html";
+					};
+				};
+				xhr.open("GET", ".", true);
+				xhr.send();
+				
+				console.log(JSON.stringify($d));
+				
 			};
 			
 		</script>
@@ -18,31 +41,29 @@
 	</head>
 
 	<body>
-		<form action=".">
 
+		<div>
+			<div>Q1</div>
 			<div>
-				<div>Q</div>
-				<div>A</div>
+				<input type="text" name="Q1" />
 			</div>
+		</div>
 
+		<div>
+			<div>Q2</div>
 			<div>
-				<div>Q</div>
-				<div>A</div>
+				<input type="text" name="Q2" />
 			</div>
-
+		</div>
+		
+		<div>
+			<div>Q3</div>
 			<div>
-				<div>Q</div>
-				<div>A</div>
+				<input type="text" name="Q3" />
 			</div>
+		</div>
 
-			<div>
-				<div>Q</div>
-				<div>A</div>
-			</div>
-
-			<button type="submit" onsubmit="validate();">Finish and Send</button>
-
-		</form>
+		<button onpointerdown="process();">Finish and Send</button>
 	
 	</body>
 	
