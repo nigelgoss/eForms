@@ -17,7 +17,7 @@
 				disabled = true;
 				
 				var $d = {};
-				document.querySelector("*[name]").forEach(function ($v) { $d[$v.name] = $v.value; });
+				document.querySelectorAll("*[name]").forEach(function ($v) { $d[$v.name] = $v.value; });
 
 				var xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function () {
