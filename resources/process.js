@@ -13,7 +13,7 @@
 		document.querySelectorAll("body *[name]").forEach(function ($v) {
 			if ($d[$v.name] === undefined) $d[$v.name] = ($v.type === "checkbox") ? [] : null;
 			if ($v.checked === false) return;
-			if ($v.checked === true) {
+			if ($v.type === "checkbox") {
 				$d[$v.name].push($v.value);
 			} else {
 				$d[$v.name] = ($v.value === "") ? null : $v.value;
