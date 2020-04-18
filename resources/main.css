@@ -1,4 +1,8 @@
-@font-face { font-family:Frutiger; src: url("FrutigerLTW01-55Roman.woff2"); }
+@font-face {
+	font-family: Frutiger;
+	src:	url("FrutigerLTW01-55Roman.woff2") format("woff2"),
+		url("FrutigerLTW01-55Roman.woff") format("woff");
+}
 
 * { font-family:inherit; }
 
