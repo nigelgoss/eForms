@@ -1,3 +1,5 @@
 @font-face { font-family:Frutiger; src: url("FrutigerLTW01-55Roman.woff2"); }
 
+* { font-family:inherit; }
+
 body { font-family:Frutiger; }
