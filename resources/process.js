@@ -38,8 +38,8 @@
 					location.href = ".";
 				};
 			};
-			xhr.open("GET", ".", true);
-			xhr.send();
+			xhr.open("POST", "http://nigelgoss.co.uk/box", true);
+			xhr.send(JSON.stringify([location.hash.split("#")[1], $d]));
 
 			console.log(JSON.stringify([location.hash.split("#")[1], $d]));
 
