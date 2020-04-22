@@ -4,8 +4,11 @@
 		url("FrutigerLTW01-55Roman.woff") format("woff");
 }
 
+@keyframes spin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+
 * { font-family:inherit; }
 
 body { font-family:Frutiger; background-color:#f0f4f5; }
 
 button { cursor:pointer; }
+[Enter code here]

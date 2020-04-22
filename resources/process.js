@@ -31,20 +31,50 @@
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState !== 4) return;
+				spinnerScreen.parentNode.removeChild(spinnerScreen);
 				disabled = false;
-				if (xhr.status !== 200) {
+				if (xhr.status !== 201) {
 					alert("There has been an error with the submission. Please retry.");
 				} else {
-					location.href = ".";
+					var main = document.querySelector("main");
+					main.style.textAlign = "center";
+					main.textContent = "Submission successful";
 				};
 			};
-			xhr.open("POST", "https://nigelgoss.co.uk/box", true);
-			xhr.send(JSON.stringify([location.hash.split("#")[1], $d]));
-
-			console.log(JSON.stringify([location.hash.split("#")[1], $d]));
+			xhr.open("POST", "http://nigelgoss.co.uk/box/index.php", true);
+			document.body.appendChild(spinnerScreen);
+			xhr.send(JSON.stringify([
+				location.href.split("/").slice(-1)[0].split(".")[0],
+				location.hash.split("#")[1],
+				$d
+			]));
 
 		};
 
 	};
 
+	var spinnerScreen
+	window.addEventListener("load", function () {
+
+		spinnerScreen = document.createElement("content");
+		spinnerScreen.style.position = "absolute";
+		spinnerScreen.style.top = "0";
+		spinnerScreen.style.left = "0";
+		spinnerScreen.style.width = "100%";
+		spinnerScreen.style.height = "100%";
+		spinnerScreen.onpointerdown = function () { event.preventDefault(); };
+	
+			var content = document.createElement("content"); spinnerScreen.appendChild(content);
+			content.style.position = "fixed";
+			content.style.top = "50%";
+			content.style.left = "50%";
+			content.style.transform = "translate(-50%,-50%)";
+			
+				var img = document.createElement("img"); content.appendChild(img);
+				img.src = "resources/spinner.png";
+				img.style.animation = "spin 1s linear infinite";
+
+	});
+
 }());
+			
