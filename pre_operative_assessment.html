@@ -10,12 +10,11 @@
 		<link rel="stylesheet" href="resources/main.css">
 		
 		<style>
-		
-			body > div { border:1px solid #d8dde0; }
-			body > div + div { margin:10px 10px 0 10px; }
+			
+			main > div { margin:10px 0 10px 0; border:1px solid #d8dde0; }
 			div { padding:10px; }
-			label { cursor:pointer; }
-			textarea { width:100%; height:50px; resize:none; }
+			label { cursor:pointer; display:block; padding:5px; }
+			textarea { box-sizing:border-box; width:100%; height:100px; resize:none; }
 			button { background-color:#007f3b; color:#ffffff; border:0; padding:10px; border-radius:5px; font-size:1.2em; }
 			
 		</style>
@@ -28,11 +27,15 @@
 				
 				var $e = [];
 				
-				if ($d["OperationExplained"] === null) { $e.push("Question 1"); };
-				if ($d["OperationWilling"] === null) { $e.push("Question 2"); };
+				//if ($d["OperationWilling"] === null) { $e.push("Question 3"); };
 
 				return $e;
 				
+			};
+
+			onload = function () {
+				if (location.hash.split("")[1] !== "F") document.querySelectorAll(".femaleOnly").forEach(function ($v) { $v.parentNode.removeChild($v); });
+				if (location.hash.split("")[2] !== "2") document.querySelectorAll(".daycaseOnly").forEach(function ($v) { $v.parentNode.removeChild($v); });
 			};
 			
 		</script>
@@ -41,10 +44,12 @@
 
 	<body style="margin:0;">
 
-		<div style="background-color:#005eb8; text-align:right;">
-			<img src="resources/nhs-logo.png" />
-		</div>
+		<header style="background-color:#005eb8; text-align:right; padding:10px;">
+			<img src="resources/nhs-logo.png" alt="NHS Logo" />
+		</header>
 		
+		<main style="max-width:800px; margin:auto; padding:10px;">
+
 		<div style="border:8px solid #005eb8;">
 			<div style="text-align:center; font-weight:bold; font-size:2em;">
 				Pre Operative Assessment
@@ -55,49 +60,201 @@
 		</div>
 		
 		<div>
-			<div>1) Have you had any of the following vascular or heart conditions?</div>
+			<div style="font-weight:bold;">Have you had any of the following vascular or heart conditions?</div>
 			<div>
-				<label><input type="checkbox" name="VascularHeartConditions" value="High blood pressure (hypertension)" />High blood pressure (hypertension)</label><br>
-				<label><input type="checkbox" name="VascularHeartConditions" value="Chest pain / Angina" />Chest pain / Angina</label><br>
-				<label><input type="checkbox" name="VascularHeartConditions" value="Heart attack" />Heart attack</label><br>
-				<label><input type="checkbox" name="VascularHeartConditions" value="Heart failure" />Heart failure</label><br>
-				<label><input type="checkbox" name="VascularHeartConditions" value="Palpitations / Irregular heart beat" />Palpitations / Irregular heart beat</label><br>
-				<label><input type="checkbox" name="VascularHeartConditions" value="Heart murmur or Rheumatic fever" />Heart murmur or Rheumatic fever</label><br>
-				<label><input type="checkbox" name="VascularHeartConditions" value="Pacemaker / Internal cardiac device" />Pacemaker / Internal cardiac device</label><br>
+				<label><input type="checkbox" name="VascularHeartConditions" value="High blood pressure" />High blood pressure (hypertension)</label>
+				<label><input type="checkbox" name="VascularHeartConditions" value="Chest pain / Angina" />Chest pain / Angina</label>
+				<label><input type="checkbox" name="VascularHeartConditions" value="Heart attack" />Heart attack</label>
+				<label><input type="checkbox" name="VascularHeartConditions" value="Heart failure" />Heart failure</label>
+				<label><input type="checkbox" name="VascularHeartConditions" value="Palpitations / Irregular heart beat" />Palpitations / Irregular heart beat</label>
+				<label><input type="checkbox" name="VascularHeartConditions" value="Heart murmur or Rheumatic fever" />Heart murmur or Rheumatic fever</label>
+				<label><input type="checkbox" name="VascularHeartConditions" value="Pacemaker / Internal cardiac device" />Pacemaker / Internal cardiac device</label>
 				<label><input type="checkbox" name="VascularHeartConditions" value="Any other heart condition" />Any other heart condition</label>
 			</div>
 		</div>
 		
 		<div>
-			<div>2) Have you had any of the following chest or breathing conditions?</div>
+			<div style="font-weight:bold;">Have you had any of the following chest or breathing conditions?</div>
 			<div>
-				<label><input type="checkbox" name="ChestBreathingConditions" value="Asthma" />Asthma</label><br>
-				<label><input type="checkbox" name="ChestBreathingConditions" value="Emphysema or chronic bronchitis / COPD" />Emphysema or chronic bronchitis / COPD</label><br>
-				<label><input type="checkbox" name="ChestBreathingConditions" value="TB (Tuberculosis)" />TB (Tuberculosis)</label><br>
-				<label><input type="checkbox" name="ChestBreathingConditions" value="Pneumonia / Chest infection - treated in hospital" />Pneumonia / Chest infection - treated in hospital</label><br>
-				<label><input type="checkbox" name="ChestBreathingConditions" value="Obstructive sleep apnoea" />Obstructive sleep apnoea</label><br>
+				<label><input type="checkbox" name="ChestBreathingConditions" value="Asthma" />Asthma</label>
+				<label><input type="checkbox" name="ChestBreathingConditions" value="Emphysema or chronic bronchitis / COPD" />Emphysema or chronic bronchitis / COPD</label>
+				<label><input type="checkbox" name="ChestBreathingConditions" value="TB" />TB (Tuberculosis)</label>
+				<label><input type="checkbox" name="ChestBreathingConditions" value="Pneumonia / Chest infection - treated in hospital" />Pneumonia / Chest infection - treated in hospital</label>
+				<label><input type="checkbox" name="ChestBreathingConditions" value="Obstructive sleep apnoea" />Obstructive sleep apnoea</label>
 				<label><input type="checkbox" name="ChestBreathingConditions" value="Other chest or breathing condition needing specialist treatment" />Other chest or breathing condition needing specialist treatment</label>
 			</div>
 		</div>
 
 		<div>
-			<div>3) Are you willing to have the proposed operation?</div>
+			<div style="font-weight:bold;">Have you had any of the following nervous system conditions?</div>
 			<div>
-				<label><input type="radio" name="OperationWilling" value="Yes" />Yes</label>
-				<label><input type="radio" name="OperationWilling" value="No" />No</label>
+				<label><input type="checkbox" name="NervousSystemConditions" value="Stroke (CVA) or Mini-stroke (TIA)" />Stroke (CVA) or Mini-stroke (TIA)</label>
+				<label><input type="checkbox" name="NervousSystemConditions" value="Epilepsy / Fits" />Epilepsy / Fits</label>
+				<label><input type="checkbox" name="NervousSystemConditions" value="Fainting / Blackouts / Dizzy spells" />Fainting / Blackouts / Dizzy spells</label>
+				<label><input type="checkbox" name="NervousSystemConditions" value="Multiple sclerosis" />Multiple sclerosis</label>
+				<label><input type="checkbox" name="NervousSystemConditions" value="Other serious nervous system or muscle disease" />Other serious nervous system or muscle disease (e.g. causing weakness, wasting, tremor, paralysis or spasms)</label>
+				<label><input type="checkbox" name="NervousSystemConditions" value="Mental health illness, Learning disability, Dementia, Cognative impairment" />Mental health illness, Learning disability, Dementia, Cognative impairment</label>
 			</div>
 		</div>
-		
+
 		<div>
-			<div>3) Please use this space for any other comments you have</div>
+			<div style="font-weight:bold;">Have you had any of the following blood conditions?</div>
 			<div>
-				<textarea name="Comments"></textarea>
+				<label><input type="checkbox" name="BloodConditions" value="Vein or artery thrombosis or Embolism" />Vein or artery thrombosis (clotting) or Embolism</label>
+				<label><input type="checkbox" name="BloodConditions" value="Any condition causing increased blood clotting" />Any condition causing increased blood clotting (thrombophilia)</label>
+				<label><input type="checkbox" name="BloodConditions" value="Condition causing increased bleeding" />Condition causing increased bleeding (e.g. haemophilia)</label>
+				<label><input type="checkbox" name="BloodConditions" value="Sickle cell disease" />Sickle cell disease</label>
+				<label><input type="checkbox" name="BloodConditions" value="Anaemia" />Anaemia</label>
+			</div>
+		</div>
+
+		<div>
+			<div style="font-weight:bold;">Have you had any of the following medical conditions?</div>
+			<div>
+				<label><input type="checkbox" name="MedicalConditions" value="Diabetes" />Diabetes</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Thyroid problem" />Thyroid problem (e.g. overactive or underactive thyroid)</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Kidney or bladder disease" />Kidney or bladder disease (except for simple urine infections)</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Liver disease or jaundice" />Liver disease or jaundice</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Stomach ulcer or Duodenal ulcer" />Stomach ulcer or Duodenal ulcer</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Hiatus hernia" />Hiatus hernia (stomach hernia)</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Arthritis" />Arthritis</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Any condition that limits movement of your neck or jaw" />Any condition that limits movement of your neck or jaw</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Any kind of cancer" />Any kind of cancer</label>
+				<label><input type="checkbox" name="MedicalConditions" value="Any other medical condition that has required specialist treatment" />Any other medical condition that has required specialist treatment</label>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>Have you had any previous operations?</strong> If yes, please state what operations and when. <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="PreviousOperations"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>Have you or anyone in your family had problems with anaesthetics?</strong> If yes, please give details. <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="AnaestheticProblems"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>Do you take any medicines?</strong> Include prescription medicines, over-the-counter medicines, herbal remedies, contraception and HRT. <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="MedicineDetails"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>Do you smoke?</strong></div>
+			<div>
+				<label><input type="radio" name="Smoker" value="Yes" />Yes</label>
+				<label><input type="radio" name="Smoker" value="No" />No</label>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>If you have ever smoked please detail approximate periods and average number of cigarettes / amount of tobacco per day.</strong> <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="SmokingDetails"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>If you drink alcohol please detail the approximate number of units on average per week.</strong> 1/2 pint of beer = 1 unit. 1 small glass (125ml) wine = 1 1/2 units. 1 tot (25ml) spirits = 1 unit. <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="AlcoholDetails"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>If you use any recreational drugs please give details.</strong> <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="RecreationalDrugsDetails"></textarea>
+			</div>
+		</div>
+
+		<div class="femaleOnly">
+			<div><strong>Is there any possibility you may be / you are pregnant?</strong></div>
+			<div>
+				<label><input type="radio" name="Pregnant" value="Yes" />Yes</label>
+				<label><input type="radio" name="Pregnant" value="No" />No</label>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>Do you ever get acid reflux (stomach acid in the back of your mouth) when lying flat or bending forwards?</strong></div>
+			<div>
+				<label><input type="radio" name="Pregnant" value="Yes" />Yes</label>
+				<label><input type="radio" name="Pregnant" value="No" />No</label>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>Do you have any dental crowns, caps, implants or bridges, or any loose teeth, or do you wear dentures?</strong></div>
+			<div>
+				<label><input type="radio" name="DentalComplications" value="Yes" />Yes</label>
+				<label><input type="radio" name="DentalComplications" value="No" />No</label>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>If you have any allergies (e.g. to medicines, foods, latex, rubber, plasters) please give details and describe the allergic reaction.</strong> (e.g. rash, swelling, wheezing, low blood pressure). <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="AllergiesDetails"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>If there is any reason you may not be able to manage at home after your operation please give details.</strong> <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="ManageAtHomeDetails"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>If there is anything else you want the surgeon, anaesthetist or nurse to know please give details.</strong> <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="SurgeonCommentDetails"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div><strong>If you have had any other hospital admissions in the last five years please give details.</strong> <em>Please leave blank for none.</em></div>
+			<div>
+				<textarea name="PreviosAdmissionsDetails"></textarea>
+			</div>
+		</div>
+
+		<div class="daycaseOnly">
+			<div><strong>Do you have a telephone at home, or a mobile phone?</strong></div>
+			<div>
+				<label><input type="radio" name="Telephone" value="Yes" />Yes</label>
+				<label><input type="radio" name="Telephone" value="No" />No</label>
+			</div>
+		</div>
+
+		<div class="daycaseOnly">
+			<div><strong>Can you arrange someone over 18 to take you home after the operation?</strong></div>
+			<div>
+				<label><input type="radio" name="PostOpTravel" value="Yes" />Yes</label>
+				<label><input type="radio" name="PostOpTravel" value="No" />No</label>
+			</div>
+		</div>
+
+		<div class="daycaseOnly">
+			<div><strong>Can you arrange someone over 18 to look after you at home, for 24 hours, after the operation?</strong></div>
+			<div>
+				<label><input type="radio" name="PostOpCarer" value="Yes" />Yes</label>
+				<label><input type="radio" name="PostOpCarer" value="No" />No</label>
 			</div>
 		</div>
 
 		<div style="text-align:center;">
-			<button onpointerdown="process();">Finish and send</button>
+			<button onclick="process();">Finish and send</button>
 		</div>
+
+		</main>
 			
 	</body>
 	
